@@ -1,0 +1,33 @@
+<% provide(:title, "Log in") %>
+
+<body>
+  <%= render 'layouts/header' %>
+  <!--Logo-->
+  <div class="row">
+    <%= image_tag("logo.png", alt: "Waste Not Want Not",id: "home_img") %>
+  </div>
+  <br/>
+
+  <div class="row ">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <br/>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 signin_center">
+      <br>New user?
+        <%= link_to " Sign up now!", signup_path %></br>
+    </div>
+  </div>
+</div>
+</div>
+</body>

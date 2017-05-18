@@ -1,0 +1,158 @@
+<body class="index_body">
+  <%= render 'layouts/header' %>
+  <div>
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
+  <!--img-->
+  <div class="index_img1">
+    <div class="index_caption">
+      <span class="border">SAVE FOOD WITH
+        <br/>WASTE NOT WANT NOT</span>
+      <div id="signup-btn">
+        <%= link_to "Sign up now!", new_user_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="index_description container">
+    <h3 class="index_title">ZERO FOOD WASTE</h3>
+    <div class="col-xs-12 col-md-6">
+      <br/>In Metro Vancouver, a lot of food is wasted everyday.<br/>
+      Over 50% of food waste are uneaten leftovers or expired ingredients.
+      <br/>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <br/>
+      <iframe width="100%" src="http://players.brightcove.net/775281566001/default_default/index.html?videoId=4218742297001&amp;wmode=transparent" allowfullscreen="true" wmode="opaque"></iframe>
+    </div>
+  </div>
+
+  <div class="index_img2">
+    <div class="index_caption">
+      <span class="border">PLAN YOUR MEAL<br/>WITH US</span>
+    </div>
+  </div>
+
+  <div style="position:relative;">
+    <div class="index_description" style="background-color: green; opacity: 0.65; color: white; padding: 10px;">
+      <h3>3 reasons why I should plan my meals in advance:</h3><br>
+      <p>Save time and money<br>Make healthier and higher quality food choices</br>Reduce<button id="myBtn" style="background: transparent; border:none !important">leftovers</button>and exceeded groceries
+      </p>
+
+    </div>
+  </div>
+
+  <div class="index_img1">
+    <div class="index_caption">
+      <span class="border">COOL!<br/>Ready to SIGN UP?</span>
+      <div id="signup-btn">
+        <a class="btn btn-success" href="signup.html">Click here</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:#111; color:white; text-align:center">
+    2017&copy; Waste Not Want Not
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <canvas id="canvas" width=100% height=100%></canvas>
+  </div>
+
+  <script>
+    function leftovers() {
+      var canvas = document.getElementById("canvas");
+
+      var ctx = canvas.getContext("2d");
+
+      ctx.canvas.width = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+      var base_image;
+      // newly spawned objects start at Y=-100
+      var spawnLineY = -100;
+      // spawn a new object every 300ms
+      var spawnRate = 300;
+      // set how fast the objects will fall
+      var spawnRateOfDescent = 7;
+      // when was the last object spawned
+      var lastSpawn = -1;
+      // this array holds all spawned object
+      var objects = [];
+      // save the starting time (used to calc elapsed time)
+      var startTime = Date.now();
+      // start animating
+      animate();
+      function spawnRandomObject() {
+        // select a random type forthis new object
+        var t;
+        // Math.random() generates a semi-random number between 0-1. if random < 1/3, pizza; random < 2/3, hamburger; else meatball.
+        if (Math.random() < 0.33) {
+          t = "pizza.gif";
+        } else if (Math.random() < 0.66) {
+          t = "hamburger.png";
+        } else {
+          t = "meatball.png";
+        }
+        // create the new object
+        var object = { // set this objects type
+          type: t,
+          // set x randomly but at least 1/10 off the canvas edges
+          x: Math.random() * (canvas.width) - 15,
+          // set y to start on the line where objects are spawned
+          y: spawnLineY
+        } // add the new object to the objects[] array
+        objects.push(object);
+      }
+      function animate() { // get the elapsed time
+        var time = Date.now(); // see if its time to spawn a new object
+        if (time > (lastSpawn + spawnRate)) {
+          lastSpawn = time;
+          spawnRandomObject();
+        } // request another animation frame
+        requestAnimationFrame(animate);
+        // clear the canvas so all objects can be // redrawn in new positions
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // move each object down the canvas
+        for (var i = 0; i < objects.length; i++) {
+          var object = objects[i];
+          object.y += spawnRateOfDescent;
+          base_image = new Image();
+          base_image.onload = function () {}
+          base_image.src = '/assets/' + object.type;
+          ctx.drawImage(base_image, object.x, object.y);
+        }
+      }
+    }
+
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+      leftovers();
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>

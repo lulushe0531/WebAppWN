@@ -1,0 +1,58 @@
+<body class="container">
+  <div class="row">
+    <%= image_tag("logo.png", alt: "Waste Not Want Not",id: "home_img") %>
+  </div>
+
+  <br/>
+  <!--new button version-->
+  <div class="nav_buttons">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+
+      <li class="btn btn-block home_nav">
+        <%= link_to '#' do %>
+        <span class="glyphicon glyphicon-calendar home_glyphicon"></span>
+        Meal Planner
+        <% end %>
+      </li>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+
+      <li class="btn btn-block home_nav">
+        <%= link_to '#' do %>
+        <span class="glyphicon glyphicon-queen home_glyphicon"></span>
+        Achievement
+        <% end %>
+      </li>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+
+      <li class="btn btn-block home_nav">
+        <%= link_to affiliated_path do %>
+        <span class="glyphicon glyphicon-bookmark home_glyphicon"></span>
+        Affliated Page
+        <% end %>
+      </li>
+      <br/>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <li class="btn btn-block home_nav">
+        <%= link_to current_user do %>
+        <span class="glyphicon glyphicon-user home_glyphicon"></span>
+        Profile
+        <% end %>
+      </li>
+    </div>
+  </div>
+</div>
+</body>
+</html>

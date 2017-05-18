@@ -1,0 +1,57 @@
+<nav class="navbar navbar-inverse" style="background: #b998f2">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path do %>
+      <span class="navbar-brand">Waste Not Want Not</span>
+      <% end %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to homepage_path do %>
+          <span class="active"></span>
+          Home
+          <% end %>
+        </li>
+        <li><%= link_to affiliated_path do %>
+          <span class="glyphicon glyphicon-queen"></span>
+          Affliated Page
+          <% end %>
+        </li>
+        <% if logged_in? %>
+        <li><%= link_to current_user do %>
+          <span class="glyphicon glyphicon-user"></span>
+          Profile
+          <% end %>
+        </li>
+        <li><%= link_to root_path do %>
+          <span class="glyphicon glyphicon-calendar"></span>
+          Meal Planner
+          <% end %>
+        </li>
+        <li><%= link_to root_path do %>
+          <span class="glyphicon glyphicon-bookmark"></span>
+          Achievement
+          <% end %>
+        </li>
+      </ul>
+      <ul class=" nav navbar-nav navbar-right">
+        <li><%= link_to logout_path, method: :delete do %>
+          <span class="glyphicon glyphicon-log-out"></span>
+          Sign Out
+          <% end %>
+        </li>
+      <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+</nav>

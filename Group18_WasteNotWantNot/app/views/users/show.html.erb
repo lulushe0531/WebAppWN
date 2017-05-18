@@ -1,0 +1,55 @@
+<% provide(:title, @user.name) %>
+
+<body>
+  <%= render 'layouts/header' %>
+  <!--Profile Section-->
+
+  <div class="row title">
+    <h3>My Profile</h3>
+    <div id="profileImg">
+      <%= gravatar_for @user %>
+    </div>
+  </div>
+  <br>
+  <div class="col-xs-12">
+    <table class="table table-hover table-striped">
+      <tr>
+        <td>Username</td>
+        <td>
+          <i>
+            <%= @user.name %>
+          </i>
+        </td>
+      </tr>
+      <tr>
+        <td>Email Address</td>
+        <td>
+          <i>
+            <%= @user.email %>
+          </i>
+        </td>
+        <tr>
+          <td></td>
+          <td>
+            <i>
+              <%= link_to "Edit My Profile", edit_user_path(current_user) %></br>
+          </i>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!--Achievement Section-->
+
+  <div class="row title">
+    <h3>My Achievements</h3>
+  </div>
+  <p></p>
+  <div class="col-xs-12">
+    <table class="table table-hover table-striped">
+      <tr>
+        <td>This section is temporarily blank!</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</body>
